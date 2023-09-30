@@ -41,6 +41,20 @@
     <ItemGroup>
         <Compile Include="Properties\AssemblyInfo.cs"/>
     </ItemGroup>
+    <ItemGroup>
+      <ProjectReference Include="..\NearBusCleanArch.Application\NearBusCleanArch.Application.csproj">
+        <Project>{25f70811-2789-4d0e-913d-0345b2608670}</Project>
+        <Name>NearBusCleanArch.Application</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\NearBusCleanArch.Domain\NearBusCleanArch.Domain.csproj">
+        <Project>{24537fa4-09aa-481f-a51a-d05c473213ba}</Project>
+        <Name>NearBusCleanArch.Domain</Name>
+      </ProjectReference>
+      <ProjectReference Include="..\NearBusCleanArch.Infra.Data\NearBusCleanArch.Infra.Data.csproj">
+        <Project>{d9a17f1e-f6dc-4fa0-98e4-36c90974bb15}</Project>
+        <Name>NearBusCleanArch.Infra.Data</Name>
+      </ProjectReference>
+    </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
          Other similar extension points exist, see Microsoft.Common.targets.
