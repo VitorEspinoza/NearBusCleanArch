@@ -1,8 +1,8 @@
 ﻿namespace NearBusCleanArch.Domain.Entities
 {
-    public class Account
+    public class Account : Entity
     {
-        public int id { get; set; }
+
         public string Email { get; set; }
         public string Password { get; set; }
         
