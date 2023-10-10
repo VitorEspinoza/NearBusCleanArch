@@ -1,40 +1,80 @@
-﻿namespace NearBusCleanArch.Domain.Validation;
+﻿using System;
+using System.Text;
+
+namespace NearBusCleanArch.Domain.Validation;
 
 public class ValidateCpf
 {
     public static bool IsCpf(string cpf)
     {
-        var multiplier1 = new int[9] { 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-        var multiplier2 = new int[10] { 11, 10, 9, 8, 7, 6, 5, 4, 3, 2 };
-        string tempCpf;
-        string digit;
-        int sum;
-        int rest;
-        cpf = cpf.Trim();
-        cpf = cpf.Replace(".", "").Replace("-", "");
-        if (cpf.Length != 11)
+        string cleanedCPF = RemoveNonNumericChars(cpf);
+        
+        if (cleanedCPF.Length != 11)
+        {
             return false;
-        tempCpf = cpf.Substring(0, 9);
-        sum = 0;
+        }
+        
+        if (AreAllDigitsSame(cleanedCPF))
+        {
+            return false;
+        }
+        
+        int sum = 0;
+        for (int i = 0; i < 9; i++)
+        {
+            sum += int.Parse(cleanedCPF[i].ToString()) * (10 - i);
+        }
+        int firstVerificationDigit = 11 - (sum % 11);
 
-        for(int i=0; i<9; i++)
-            sum += int.Parse(tempCpf[i].ToString()) * multiplier1[i];
-        rest = sum % 11;
-        if ( rest < 2 )
-            rest = 0;
-        else
-            rest = 11 - rest;
-        digit = rest.ToString();
-        tempCpf = tempCpf + digit;
+        if (firstVerificationDigit >= 10)
+        {
+            firstVerificationDigit = 0;
+        }
+        
         sum = 0;
-        for(int i=0; i<10; i++)
-            sum += int.Parse(tempCpf[i].ToString()) * multiplier2[i];
-        rest = sum % 11;
-        if (rest < 2)
-            rest = 0;
-        else
-            rest = 11 - rest;
-        digit = digit + rest.ToString();
-        return cpf.EndsWith(digit);
+        for (int i = 0; i < 10; i++)
+        {
+            sum += int.Parse(cleanedCPF[i].ToString()) * (11 - i);
+        }
+        int secondVerificationDigit = 11 - (sum % 11);
+
+        if (secondVerificationDigit >= 10)
+        {
+            secondVerificationDigit = 0;
+        }
+        
+        return firstVerificationDigit == int.Parse(cleanedCPF[9].ToString()) &&
+               secondVerificationDigit == int.Parse(cleanedCPF[10].ToString());
+    }
+
+    private static string RemoveNonNumericChars(string input)
+    {
+        char[] numericChars = new char[input.Length];
+        int index = 0;
+
+        foreach (char c in input)
+        {
+            if (char.IsDigit(c))
+            {
+                numericChars[index++] = c;
+            }
+        }
+
+        return new string(numericChars, 0, index);
+    }
+
+    private static bool AreAllDigitsSame(string input)
+    {
+        char firstDigit = input[0];
+
+        foreach (char digit in input)
+        {
+            if (digit != firstDigit)
+            {
+                return false;
+            }
+        }
+
+        return true;
     }
 }
