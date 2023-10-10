@@ -1,67 +1,67 @@
-using FluentAssertions;
+﻿using FluentAssertions;
 using NearBusCleanArch.Domain.Entities;
 
 namespace NearBusCleanArch.Domain.Tests;
 
-public class EmployeeUnitTest1
+public class RouteUnitTest1
 {
-    [Fact(DisplayName = "Throw Domain Exception For Missing Document")]
-    public void CreateEmployee_MissingDocumentValue_DomainExceptionRequiredDocument()
+     [Fact(DisplayName = "Throw Domain Exception For Missing Departure Time")]
+    public void CreateRoute_MissingDepartureTime_DomainExceptionRequiredDepartureTime()
     {
-        Action action = () => new Employee(1, "Vitor", "");
+        Action action = () => new Route(1, "Fake Route", "");
         action.Should()
             .Throw<NearBusCleanArch.Domain.Validation.DomainExceptionValidation>()
-            .WithMessage("Invalid document. Document is required");
+            .WithMessage("Invalid date. Date is required");
     }
     
-    [Fact(DisplayName = "Throw Domain Exception For Null Document")]
-    public void CreateEmployee_WithNullDocumentValue_DomainExceptionRequiredDocument()
+    [Fact(DisplayName = "Throw Domain Exception For Null Departure Time")]
+    public void CreateRoute_WithNullDepartureTimeValue_DomainExceptionRequiredDepartureTime()
     {
-        Action action = () => new Employee(1, "Vitor", null);
+        Action action = () => new Route(1, "Fake Route", null);
         action.Should()
             .Throw<NearBusCleanArch.Domain.Validation.DomainExceptionValidation>()
-            .WithMessage("Invalid document. Document is required");
+            .WithMessage("Invalid date. Date is required");
     }
     
-    [Fact(DisplayName = "Create Employee With Valid State")]
-    public void CreateEmployee_WithValidParameters_ResultObjectValidState()
+    [Fact(DisplayName = "Create Route With Valid State")]
+    public void CreateRoute_WithValidParameters_ResultObjectValidState()
     {
-        Action action = () => new Employee(1, "Vitor", "863.803.810-07");
+        Action action = () => new Route(1, "Fake Route", "09/10/2023");
         action.Should()
             .NotThrow<NearBusCleanArch.Domain.Validation.DomainExceptionValidation>();
     }
     
     [Fact(DisplayName = "Throw Domain Exception For Invalid Id")]
-    public void CreateEmployee_NegativeIdValue_DomainExceptionInvalidId()
+    public void CreateRoute_NegativeIdValue_DomainExceptionInvalidId()
     {
-        Action action = () => new Employee(-1, "Vitor", "863.803.810-07");
+        Action action = () => new Route(-1, "Fake Route", "09/10/2023");
         action.Should()
             .Throw<NearBusCleanArch.Domain.Validation.DomainExceptionValidation>()
             .WithMessage("Invalid Id value");
     }
     
     [Fact(DisplayName = "Throw Domain Exception For Too Short Name")]
-    public void CreateEmployee_ShortNameValue_DomainExceptionShortName()
+    public void CreateRoute_ShortNameValue_DomainExceptionShortName()
     {
-        Action action = () => new Employee(1, "Vi", "863.803.810-07");
+        Action action = () => new Route(1, "Vi", "09/10/2023");
         action.Should()
             .Throw<NearBusCleanArch.Domain.Validation.DomainExceptionValidation>()
             .WithMessage("Invalid name, too short. Minimum 3 characters.");
     }
     
     [Fact(DisplayName = "Throw Domain Exception For Missing Name")]
-    public void CreateEmployee_MissingNameValue_DomainExceptionRequiredName()
+    public void CreateRoute_MissingNameValue_DomainExceptionRequiredName()
     {
-        Action action = () => new Employee(1, "", "863.803.810-07");
+        Action action = () => new Route(1, "", "09/10/2023");
         action.Should()
             .Throw<NearBusCleanArch.Domain.Validation.DomainExceptionValidation>()
             .WithMessage("Invalid name. Name is required");
     }
     
     [Fact(DisplayName = "Throw Domain Exception For Null Name")]
-    public void CreateEmployee_WithNullNameValue_DomainExceptionRequiredName()
+    public void CreateRoute_WithNullNameValue_DomainExceptionRequiredName()
     {
-        Action action = () => new Employee(1, null, "863.803.810-07");
+        Action action = () => new Route(1, null, "09/10/2023");
         action.Should()
             .Throw<NearBusCleanArch.Domain.Validation.DomainExceptionValidation>()
             .WithMessage("Invalid name. Name is required");
