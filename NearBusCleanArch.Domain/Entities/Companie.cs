@@ -39,5 +39,7 @@ namespace NearBusCleanArch.Domain.Entities
      public int AdressId { get; set; }
      public Adress? Adress { get; set; }
 
+     public ICollection<Route> Routes { get; } = new List<Route>();
+     public ICollection<Employee> Employees { get; } = new List<Employee>();
     }
 }

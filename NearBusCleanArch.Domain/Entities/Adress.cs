@@ -54,6 +54,10 @@ namespace NearBusCleanArch.Domain.Entities
         ZipCode = zipCode;
     }
     
-   
+    public ICollection<Employee>? Employees { get; } = new List<Employee>();
+    
+    public int CompanieId { get; set; }
+    public Companie? Companie { get; set; }
+
     }
 }
