@@ -12,6 +12,7 @@
         <AssemblyName>NearBusCleanArch.Domain</AssemblyName>
         <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
         <FileAlignment>512</FileAlignment>
+        <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
         <PlatformTarget>AnyCPU</PlatformTarget>
@@ -39,7 +40,19 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="Entities\Adress.cs" />
+        <Compile Include="Entities\Companie.cs" />
+        <Compile Include="Entities\Employee.cs" />
+        <Compile Include="Entities\Entity.cs" />
+        <Compile Include="Entities\Route.cs" />
         <Compile Include="Properties\AssemblyInfo.cs"/>
+        <Compile Include="Validation\DomainExceptionValidation.cs" />
+        <Compile Include="Validation\ValidateZipCode.cs" />
+        <Compile Include="Validation\ValidateCnpj.cs" />
+        <Compile Include="Validation\ValidateCpf.cs" />
+    </ItemGroup>
+    <ItemGroup>
+      <Folder Include="Interfaces\" />
     </ItemGroup>
     <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
     <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
