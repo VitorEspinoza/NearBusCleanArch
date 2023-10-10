@@ -25,7 +25,7 @@ namespace NearBusCleanArch.Domain.Entities
             DomainExceptionValidation.When(name.Length < 3, "Invalid name, too short. Minimum 3 characters.");
             
             DomainExceptionValidation.When(string.IsNullOrEmpty(document), "Invalid document. document is required");
-            DomainExceptionValidation.When(!ValidateCpf.IsCpf(document), "Invalid document. Incorrect document format");
+            DomainExceptionValidation.When(!ValidateCpf.IsCpf(document), "Invalid document.");
 
             Name = name;
             Document = document;
