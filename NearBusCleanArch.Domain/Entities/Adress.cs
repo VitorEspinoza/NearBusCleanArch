@@ -44,7 +44,6 @@ namespace NearBusCleanArch.Domain.Entities
         DomainExceptionValidation.When(string.IsNullOrEmpty(number), "Invalid number. Number is required");
         
         DomainExceptionValidation.When(string.IsNullOrEmpty(zipCode), "Invalid zip code. Zip Code is required");
-        DomainExceptionValidation.When(!ValidateZipCode.IsZipCode(zipCode), "Invalid zip code. Incorrect Zip Code Format");
 
         Street = street;
         Neighborhood = neighborhood;
