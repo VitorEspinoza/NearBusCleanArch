@@ -32,9 +32,7 @@ namespace NearBusCleanArch.Domain.Entities
         }
         
         public int AdressId { get; set; }
-        #nullable enable
         public Adress? Adress { get; set; }
-        #nullable disable
         
         public int CompanieId { get; set; }
         public Companie Companie { get; set; }

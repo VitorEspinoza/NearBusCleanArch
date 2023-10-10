@@ -15,8 +15,5 @@
       <Folder Include="Controllers\" />
     </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\NearBusCleanArch.Infra.IoC\NearBusCleanArch.Infra.IoC.csproj" />
-    </ItemGroup>
 
 </Project>

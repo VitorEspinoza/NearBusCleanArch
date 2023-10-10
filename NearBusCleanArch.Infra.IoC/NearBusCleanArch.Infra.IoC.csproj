@@ -1,67 +1,15 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-    <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props"
-            Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')"/>
+<Project Sdk="Microsoft.NET.Sdk">
+
     <PropertyGroup>
-        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-        <ProjectGuid>{35C53D89-2CFB-4109-B068-5C19492FA884}</ProjectGuid>
-        <OutputType>Library</OutputType>
-        <AppDesignerFolder>Properties</AppDesignerFolder>
-        <RootNamespace>NearBusCleanArch.Infra.IoC</RootNamespace>
-        <AssemblyName>NearBusCleanArch.Infra.IoC</AssemblyName>
-        <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
-        <FileAlignment>512</FileAlignment>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
     </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugSymbols>true</DebugSymbols>
-        <DebugType>full</DebugType>
-        <Optimize>false</Optimize>
-        <OutputPath>bin\Debug\</OutputPath>
-        <DefineConstants>DEBUG;TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
-    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-        <PlatformTarget>AnyCPU</PlatformTarget>
-        <DebugType>pdbonly</DebugType>
-        <Optimize>true</Optimize>
-        <OutputPath>bin\Release\</OutputPath>
-        <DefineConstants>TRACE</DefineConstants>
-        <ErrorReport>prompt</ErrorReport>
-        <WarningLevel>4</WarningLevel>
-    </PropertyGroup>
+
     <ItemGroup>
-        <Reference Include="System"/>
-        <Reference Include="System.Core"/>
-        <Reference Include="System.Data"/>
-        <Reference Include="System.Xml"/>
+      <ProjectReference Include="..\NearBusCleanArch.Application\NearBusCleanArch.Application.csproj" />
+      <ProjectReference Include="..\NearBusCleanArch.Domain\NearBusCleanArch.Domain.csproj" />
+      <ProjectReference Include="..\NearBusCleanArch.Infra.Data\NearBusCleanArch.Infra.Data.csproj" />
     </ItemGroup>
-    <ItemGroup>
-        <Compile Include="Properties\AssemblyInfo.cs"/>
-    </ItemGroup>
-    <ItemGroup>
-      <ProjectReference Include="..\NearBusCleanArch.Application\NearBusCleanArch.Application.csproj">
-        <Project>{25f70811-2789-4d0e-913d-0345b2608670}</Project>
-        <Name>NearBusCleanArch.Application</Name>
-      </ProjectReference>
-      <ProjectReference Include="..\NearBusCleanArch.Domain\NearBusCleanArch.Domain.csproj">
-        <Project>{24537fa4-09aa-481f-a51a-d05c473213ba}</Project>
-        <Name>NearBusCleanArch.Domain</Name>
-      </ProjectReference>
-      <ProjectReference Include="..\NearBusCleanArch.Infra.Data\NearBusCleanArch.Infra.Data.csproj">
-        <Project>{d9a17f1e-f6dc-4fa0-98e4-36c90974bb15}</Project>
-        <Name>NearBusCleanArch.Infra.Data</Name>
-      </ProjectReference>
-    </ItemGroup>
-    <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets"/>
-    <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-         Other similar extension points exist, see Microsoft.Common.targets.
-    <Target Name="BeforeBuild">
-    </Target>
-    <Target Name="AfterBuild">
-    </Target>
-    -->
 
 </Project>

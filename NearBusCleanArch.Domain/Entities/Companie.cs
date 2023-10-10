@@ -37,7 +37,7 @@ namespace NearBusCleanArch.Domain.Entities
         
         
      public int AdressId { get; set; }
-     public Adress Adress { get; set; }
+     public Adress? Adress { get; set; }
 
     }
 }
