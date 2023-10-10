@@ -10,6 +10,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NearBusCleanArch.Infra.IoC"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NearBusCleanArch.API", "NearBusCleanArch.API\NearBusCleanArch.API.csproj", "{6090ED69-EEB2-40B2-99C7-FC885C75986C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NearBusCleanArch.Domain.Tests", "NearBusCleanArch.Domain.Tests\NearBusCleanArch.Domain.Tests.csproj", "{2F7FEBD3-7581-415D-9370-82B396F1C3DB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -36,5 +38,9 @@ Global
 		{6090ED69-EEB2-40B2-99C7-FC885C75986C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6090ED69-EEB2-40B2-99C7-FC885C75986C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6090ED69-EEB2-40B2-99C7-FC885C75986C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F7FEBD3-7581-415D-9370-82B396F1C3DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F7FEBD3-7581-415D-9370-82B396F1C3DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F7FEBD3-7581-415D-9370-82B396F1C3DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F7FEBD3-7581-415D-9370-82B396F1C3DB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
