@@ -23,10 +23,19 @@ public class EmployeeUnitTest1
             .WithMessage("Invalid document. Document is required");
     }
     
+    [Fact(DisplayName = "Throw Domain Exception For Invalid Document")]
+    public void CreateEmployee_WithInvalidDocumentValue_DomainExceptionRequiredDocument()
+    {
+        Action action = () => new Employee(1, "Vitor", "13344591093");
+        action.Should()
+            .Throw<NearBusCleanArch.Domain.Validation.DomainExceptionValidation>()
+            .WithMessage("Invalid document.");
+    }
+    
     [Fact(DisplayName = "Create Employee With Valid State")]
     public void CreateEmployee_WithValidParameters_ResultObjectValidState()
     {
-        Action action = () => new Employee(1, "Vitor", "863.803.810-07");
+        Action action = () => new Employee(1, "Vitor", "86380381007");
         action.Should()
             .NotThrow<NearBusCleanArch.Domain.Validation.DomainExceptionValidation>();
     }
@@ -34,7 +43,7 @@ public class EmployeeUnitTest1
     [Fact(DisplayName = "Throw Domain Exception For Invalid Id")]
     public void CreateEmployee_NegativeIdValue_DomainExceptionInvalidId()
     {
-        Action action = () => new Employee(-1, "Vitor", "863.803.810-07");
+        Action action = () => new Employee(-1, "Vitor", "86380381007");
         action.Should()
             .Throw<NearBusCleanArch.Domain.Validation.DomainExceptionValidation>()
             .WithMessage("Invalid Id value");
@@ -43,7 +52,7 @@ public class EmployeeUnitTest1
     [Fact(DisplayName = "Throw Domain Exception For Too Short Name")]
     public void CreateEmployee_ShortNameValue_DomainExceptionShortName()
     {
-        Action action = () => new Employee(1, "Vi", "863.803.810-07");
+        Action action = () => new Employee(1, "Vi", "86380381007");
         action.Should()
             .Throw<NearBusCleanArch.Domain.Validation.DomainExceptionValidation>()
             .WithMessage("Invalid name, too short. Minimum 3 characters.");
@@ -52,7 +61,7 @@ public class EmployeeUnitTest1
     [Fact(DisplayName = "Throw Domain Exception For Missing Name")]
     public void CreateEmployee_MissingNameValue_DomainExceptionRequiredName()
     {
-        Action action = () => new Employee(1, "", "863.803.810-07");
+        Action action = () => new Employee(1, "", "86380381007");
         action.Should()
             .Throw<NearBusCleanArch.Domain.Validation.DomainExceptionValidation>()
             .WithMessage("Invalid name. Name is required");
@@ -61,7 +70,7 @@ public class EmployeeUnitTest1
     [Fact(DisplayName = "Throw Domain Exception For Null Name")]
     public void CreateEmployee_WithNullNameValue_DomainExceptionRequiredName()
     {
-        Action action = () => new Employee(1, null, "863.803.810-07");
+        Action action = () => new Employee(1, null, "86380381007");
         action.Should()
             .Throw<NearBusCleanArch.Domain.Validation.DomainExceptionValidation>()
             .WithMessage("Invalid name. Name is required");
