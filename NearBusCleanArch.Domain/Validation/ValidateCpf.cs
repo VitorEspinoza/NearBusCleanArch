@@ -7,14 +7,13 @@ public class ValidateCpf
 {
     public static bool IsCpf(string cpf)
     {
-        string cleanedCPF = RemoveNonNumericChars(cpf);
         
-        if (cleanedCPF.Length != 11)
+        if (cpf.Length != 11)
         {
             return false;
         }
         
-        if (AreAllDigitsSame(cleanedCPF))
+        if (AreAllDigitsSame(cpf))
         {
             return false;
         }
@@ -22,7 +21,7 @@ public class ValidateCpf
         int sum = 0;
         for (int i = 0; i < 9; i++)
         {
-            sum += int.Parse(cleanedCPF[i].ToString()) * (10 - i);
+            sum += int.Parse(cpf[i].ToString()) * (10 - i);
         }
         int firstVerificationDigit = 11 - (sum % 11);
 
@@ -34,7 +33,7 @@ public class ValidateCpf
         sum = 0;
         for (int i = 0; i < 10; i++)
         {
-            sum += int.Parse(cleanedCPF[i].ToString()) * (11 - i);
+            sum += int.Parse(cpf[i].ToString()) * (11 - i);
         }
         int secondVerificationDigit = 11 - (sum % 11);
 
@@ -43,26 +42,10 @@ public class ValidateCpf
             secondVerificationDigit = 0;
         }
         
-        return firstVerificationDigit == int.Parse(cleanedCPF[9].ToString()) &&
-               secondVerificationDigit == int.Parse(cleanedCPF[10].ToString());
+        return firstVerificationDigit == int.Parse(cpf[9].ToString()) &&
+               secondVerificationDigit == int.Parse(cpf[10].ToString());
     }
-
-    private static string RemoveNonNumericChars(string input)
-    {
-        char[] numericChars = new char[input.Length];
-        int index = 0;
-
-        foreach (char c in input)
-        {
-            if (char.IsDigit(c))
-            {
-                numericChars[index++] = c;
-            }
-        }
-
-        return new string(numericChars, 0, index);
-    }
-
+    
     private static bool AreAllDigitsSame(string input)
     {
         char firstDigit = input[0];
