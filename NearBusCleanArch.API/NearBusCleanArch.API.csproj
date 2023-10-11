@@ -16,4 +16,11 @@
     </ItemGroup>
 
 
+    <ItemGroup>
+      <ProjectReference Include="..\NearBusCleanArch.Application\NearBusCleanArch.Application.csproj" />
+      <ProjectReference Include="..\NearBusCleanArch.Domain\NearBusCleanArch.Domain.csproj" />
+      <ProjectReference Include="..\NearBusCleanArch.Infra.Data\NearBusCleanArch.Infra.Data.csproj" />
+      <ProjectReference Include="..\NearBusCleanArch.Infra.Ioc\NearBusCleanArch.Infra.Ioc.csproj" />
+    </ItemGroup>
+
 </Project>
