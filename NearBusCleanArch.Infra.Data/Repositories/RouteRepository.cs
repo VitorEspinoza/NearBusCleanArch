@@ -1,4 +1,5 @@
-﻿using NearBusCleanArch.Domain.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using NearBusCleanArch.Domain.Entities;
 using NearBusCleanArch.Domain.Interfaces;
 using NearBusCleanArch.Infra.Data.Context;
 
@@ -14,12 +15,12 @@ public class RouteRepository : IRouteRepository
     }
     public async Task<IEnumerable<Route>> GetRoutesByCompanieId(int? id)
     {
-        throw new NotImplementedException();
+        return await _routeContext.Routes.Where(route => route.CompanieId == id).ToListAsync();
     }
 
     public async Task<Route> GetRouteById(int? id)
     {
-        throw new NotImplementedException();
+        return await _routeContext.Routes.FindAsync(id);
     }
 
     public async Task<Route> Create(Route route)
