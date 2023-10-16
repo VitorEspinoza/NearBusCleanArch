@@ -8,7 +8,7 @@ public class EmployeeConfiguration : IEntityTypeConfiguration<Employee>
 {
     public void Configure(EntityTypeBuilder<Employee> builder)
     {
-        builder.HasKey(employee => employee.Id);
+   
         builder.Property(employee => employee.Name).HasMaxLength(100).IsRequired();
         builder.Property(employee => employee.Document).HasMaxLength(11).IsRequired();
 
