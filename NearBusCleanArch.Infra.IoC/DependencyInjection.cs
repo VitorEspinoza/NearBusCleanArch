@@ -11,8 +11,10 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
+        var mySqlConnection = configuration.GetConnectionString("DefaultConnection");
         services.AddDbContext<ApplicationDbContext>(options => options.UseMySql(
-            ServerVersion.AutoDetect(configuration.GetConnectionString("DefaultConnection")),
+            mySqlConnection,
+            ServerVersion.AutoDetect(mySqlConnection),
             builder => builder.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
         
         services.AddScoped<IEmployeeRepository, EmployeeRepository>();
