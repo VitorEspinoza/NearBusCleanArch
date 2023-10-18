@@ -1,6 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NearBusCleanArch.Application.Interfaces;
+using NearBusCleanArch.Application.Mappings;
+using NearBusCleanArch.Application.Services;
 using NearBusCleanArch.Domain.Interfaces;
 using NearBusCleanArch.Infra.Data.Context;
 using NearBusCleanArch.Infra.Data.Repositories;
@@ -22,6 +25,12 @@ public static class DependencyInjection
         services.AddScoped<ICompanieRepository, CompanieRepository>();
         services.AddScoped<IRouteRepository, RouteRepository>();
 
+        services.AddScoped<IEmployeeService, EmployeeService>();
+        services.AddScoped<IAdressService, AdressService>();
+        services.AddScoped<ICompanieService, CompanieService>();
+        services.AddScoped<IRouteService, RouteService>();
+        
+        services.AddAutoMapper(typeof(DomainToDtoMappingProfile));
         return services;
     }
 }
