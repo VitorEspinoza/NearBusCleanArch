@@ -10,10 +10,13 @@ public class AdressService : IAdressService
 {
     private IAdressRepository _adressRepository;
     private readonly IMapper _mapper;
+
     public AdressService(IAdressRepository adressRepository, IMapper mapper)
     {
-        
+        _adressRepository = adressRepository;
+        _mapper = mapper;
     }
+
     public async Task<AdressDTO> GetAdressById(int? id)
     {
         var adressEntity = await _adressRepository.GetAdressById(id);

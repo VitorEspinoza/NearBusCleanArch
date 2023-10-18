@@ -10,10 +10,13 @@ public class CompanieService : ICompanieService
 {
     private ICompanieRepository _companieRepository;
     private readonly IMapper _mapper;
+
     public CompanieService(ICompanieRepository companieRepository, IMapper mapper)
     {
-        
+        _companieRepository = companieRepository;
+        _mapper = mapper;
     }
+
     public async Task<IEnumerable<CompanieDTO>> GetCompanies()
     {
         var companiesEntity = await _companieRepository.GetCompanies();

@@ -4,6 +4,7 @@ namespace NearBusCleanArch.Application.DTOs;
 
 public class RouteDTO
 {
+    public int Id { get; set; }
     [Required(ErrorMessage = "The Name is required")]
     [MaxLength(200)]
     public string Name { get; set; }

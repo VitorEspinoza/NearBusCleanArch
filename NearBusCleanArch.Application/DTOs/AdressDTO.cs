@@ -4,6 +4,7 @@ namespace NearBusCleanArch.Application.DTOs;
 
 public class AdressDTO
 {
+    public int Id { get; set; }
     [Required(ErrorMessage = "The street is required")]
     [MaxLength(100)]
     public string Street { get; set; }

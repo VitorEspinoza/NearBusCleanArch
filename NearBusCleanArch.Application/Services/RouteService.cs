@@ -10,10 +10,13 @@ public class RouteService : IRouteService
 {
     private IRouteRepository _routeRepository;
     private readonly IMapper _mapper;
+
     public RouteService(IRouteRepository routeRepository, IMapper mapper)
     {
-        
+        _routeRepository = routeRepository;
+        _mapper = mapper;
     }
+
     public async Task<IEnumerable<RouteDTO>> GetRoutesByCompanieId(int? id)
     {
         var routesEntity = await _routeRepository.GetRoutesByCompanieId(id);

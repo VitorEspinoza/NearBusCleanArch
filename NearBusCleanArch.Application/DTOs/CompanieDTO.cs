@@ -4,6 +4,8 @@ namespace NearBusCleanArch.Application.DTOs;
 
 public class CompanieDTO
 {
+    public int Id { get; set; }
+    public int AdressId { get; set; }
     [Required(ErrorMessage = "The Name is required")]
     [MinLength(2)]
     [MaxLength(100)]
