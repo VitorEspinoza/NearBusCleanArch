@@ -10,6 +10,8 @@ public class RouteConfiguration : IEntityTypeConfiguration<Route>
 {
     public void Configure(EntityTypeBuilder<Route> builder)
     {
+       
+        builder.HasKey(route => route.Id);
         builder.Property(route => route.Name).HasMaxLength(200).IsRequired();
         builder.Property(route => route.DepartureTime).IsRequired();
         builder.Property(route => route.DepartureDays).IsRequired().HasConversion(new DayOfWeekArrayConverter());

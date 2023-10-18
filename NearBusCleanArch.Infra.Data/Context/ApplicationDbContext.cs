@@ -12,7 +12,6 @@ public class ApplicationDbContext : DbContext
     public DbSet<Adress> Adresses { get; set; }
     public DbSet<Companie> Companies { get; set; }
     public DbSet<Employee> Employees { get; set; }
-    public DbSet<Entity> Entities { get; set; }
     public DbSet<Route> Routes { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
