@@ -16,4 +16,9 @@
     </ItemGroup>
 
 
+    <ItemGroup>
+      <ProjectReference Include="..\NearBusCleanArch.Infra.Ioc\NearBusCleanArch.Infra.Ioc.csproj" />
+
+    </ItemGroup>
+
 </Project>

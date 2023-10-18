@@ -4,14 +4,13 @@ public class ValidateCnpj
 {
     public static bool IsCnpj(string cnpj)
     {
-        string cleanedCNPJ = RemoveNonNumericChars(cnpj);
         
-        if (cleanedCNPJ.Length != 14)
+        if (cnpj.Length != 14)
         {
             return false;
         }
         
-        if (AreAllDigitsSame(cleanedCNPJ))
+        if (AreAllDigitsSame(cnpj))
         {
             return false;
         }
@@ -20,7 +19,7 @@ public class ValidateCnpj
         for (int i = 0; i < 12; i++)
         {
             int multiplier = (i < 4) ? 5 - i : 13 - i;
-            sum += int.Parse(cleanedCNPJ[i].ToString()) * multiplier;
+            sum += int.Parse(cnpj[i].ToString()) * multiplier;
         }
         int firstVerificationDigit = 11 - (sum % 11);
 
@@ -33,7 +32,7 @@ public class ValidateCnpj
         for (int i = 0; i < 13; i++)
         {
             int multiplier = (i < 5) ? 6 - i : 14 - i;
-            sum += int.Parse(cleanedCNPJ[i].ToString()) * multiplier;
+            sum += int.Parse(cnpj[i].ToString()) * multiplier;
         }
         int secondVerificationDigit = 11 - (sum % 11);
 
@@ -42,24 +41,8 @@ public class ValidateCnpj
             secondVerificationDigit = 0;
         }
         
-        return firstVerificationDigit == int.Parse(cleanedCNPJ[12].ToString()) &&
-               secondVerificationDigit == int.Parse(cleanedCNPJ[13].ToString());
-    }
-
-    private static string RemoveNonNumericChars(string input)
-    {
-        char[] numericChars = new char[input.Length];
-        int index = 0;
-
-        foreach (char c in input)
-        {
-            if (char.IsDigit(c))
-            {
-                numericChars[index++] = c;
-            }
-        }
-
-        return new string(numericChars, 0, index);
+        return firstVerificationDigit == int.Parse(cnpj[12].ToString()) &&
+               secondVerificationDigit == int.Parse(cnpj[13].ToString());
     }
 
     private static bool AreAllDigitsSame(string input)
