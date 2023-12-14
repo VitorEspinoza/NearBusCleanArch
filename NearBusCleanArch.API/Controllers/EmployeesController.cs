@@ -20,10 +20,10 @@ namespace NearBusCleanArch.API.Controllers
             _employeeService = employeeService;
         }
         
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<EmployeeDTO>>> GetByCompanieId(int id)
+        [HttpGet("{CompanieId:int}")]
+        public async Task<ActionResult<IEnumerable<EmployeeDTO>>> GetByCompanieId(int CompanieId)
         {
-            var employees = await _employeeService.GetEmployeesByCompanieId(id);
+            var employees = await _employeeService.GetEmployeesByCompanieId(CompanieId);
 
             if (employees == null)
                 return NotFound("Employees not found");

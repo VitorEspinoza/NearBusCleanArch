@@ -47,7 +47,7 @@ namespace NearBusCleanArch.API.Controllers
         {
             if (routeDto == null)
                 return BadRequest("Invalid Data");
-            
+            Console.WriteLine(routeDto);
             await _routeService.Add(routeDto);
             
             return new CreatedAtRouteResult("GetRoute", new{ id = routeDto.Id }, routeDto );
