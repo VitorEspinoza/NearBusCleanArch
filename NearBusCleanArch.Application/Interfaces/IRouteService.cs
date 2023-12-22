@@ -6,7 +6,7 @@ public interface IRouteService
 {
     Task<IEnumerable<RouteDTO>> GetRoutesByCompanieId(int? id);
     Task<RouteDTO> GetRouteById(int? id);
-    Task Add(RouteDTO routeDto);
-    Task Update(RouteDTO routeDto);
+    Task Add(RouteCreateDTO routeDto);
+    Task Update(RouteCreateDTO routeDto);
     Task Remove(int? id);
 }

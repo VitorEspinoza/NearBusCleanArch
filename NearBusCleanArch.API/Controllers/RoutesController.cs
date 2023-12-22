@@ -20,10 +20,10 @@ namespace NearBusCleanArch.API.Controllers
             _routeService = routeService;
         }
         
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<RouteDTO>>> GetRoutesByCompanieId(int id)
+        [HttpGet("by-companie/{CompanieId:int}")]
+        public async Task<ActionResult<IEnumerable<RouteDTO>>> GetRoutesByCompanieId(int CompanieId)
         {
-            var routes = await _routeService.GetRoutesByCompanieId(id);
+            var routes = await _routeService.GetRoutesByCompanieId(CompanieId);
 
             if (routes == null)
                 return NotFound("Routes not found");
@@ -43,18 +43,23 @@ namespace NearBusCleanArch.API.Controllers
         }
         
         [HttpPost]
-        public async Task<ActionResult<RouteDTO>> Post([FromBody] RouteDTO routeDto)
+        public async Task<ActionResult<RouteDTO>> Post([FromBody] RouteCreateDTO routeDto)
         {
+            
             if (routeDto == null)
                 return BadRequest("Invalid Data");
-            Console.WriteLine(routeDto);
+            
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             await _routeService.Add(routeDto);
             
             return new CreatedAtRouteResult("GetRoute", new{ id = routeDto.Id }, routeDto );
         }
         
         [HttpPut]
-        public async Task<ActionResult<RouteDTO>> Put(int id, [FromBody] RouteDTO routeDto)
+        public async Task<ActionResult<RouteDTO>> Put(int id, [FromBody] RouteCreateDTO routeDto)
         {
             if (id != routeDto.Id)
                 return BadRequest("Invalid Data");

@@ -29,13 +29,13 @@ public class RouteService : IRouteService
         return _mapper.Map<RouteDTO>(routeEntity);
     }
 
-    public async Task Add(RouteDTO routeDto)
+    public async Task Add(RouteCreateDTO routeDto)
     {
         var routeEntity = _mapper.Map<Route>(routeDto);
         await _routeRepository.Create(routeEntity);
     }
 
-    public async Task Update(RouteDTO routeDto)
+    public async Task Update(RouteCreateDTO routeDto)
     {
         var routeEntity = _mapper.Map<Route>(routeDto);
         await _routeRepository.Update(routeEntity);
