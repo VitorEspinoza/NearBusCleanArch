@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
 using NearBusCleanArch.Domain.Entities;
 using NearBusCleanArch.Infra.Data.Identity;
 
@@ -20,5 +21,12 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         base.OnModelCreating(modelBuilder);
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);
+    }
+
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+
+        optionsBuilder.UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()));
+        base.OnConfiguring(optionsBuilder);
     }
 }
